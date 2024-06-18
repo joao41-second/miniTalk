@@ -16,7 +16,7 @@ CC = cc
 RM = rm -f
 
 
-#.SILENT:
+.SILENT:
 
 all: $(NAME)
 

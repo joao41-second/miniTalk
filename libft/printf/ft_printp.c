@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 03:54:28 by jperpect          #+#    #+#             */
-/*   Updated: 2024/05/08 11:44:14 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:18:22 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int ft_printp(unsigned  long decimal )
 	
 	a = 0;
 	if (decimal == 0)
-	 return(ft_putstr_fd("(nil)",1));
-	ft_putstr_fd("0x",1);
+	 return(ft_putstr_fds("(nil)",1));
+	ft_putstr_fds("0x",1);
 	a = ft_putnbr_base(decimal ,base,1 );
 	return(a +2);
 }

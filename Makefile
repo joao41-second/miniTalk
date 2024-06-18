@@ -6,15 +6,11 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/07 15:41:05 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/17 17:30:31 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLGS = -Wall -Wextra -Werror
-
-SERVER_NAME = server
-
-CLIENT_NAME = client
 
 SERVER_FILES = ./_server/server.c
 
@@ -24,6 +20,7 @@ OBJS_CLI = $(CLIENT_FILES:.c=.o)
 
 OBJS_SER = $(SERVER_FILES:.c=.o)
 
+LIB = ./libft/libft.a ./libft/libftprintf.a
 
 AR = ar rcs
 
@@ -33,15 +30,25 @@ RM = rm -f
 
 CAT = cat number.txt 
 
-BITS = 1
+BITS = abc
+
+SERVER_NAME = server
+
+CLIENT_NAME = client
 
 #.SILENT:
 
-all: $(OBJS_SER) $(OBJS_CLI) 
+all: $(SERVER_NAME) $(CLIENT_NAME) 
+
+$(SERVER_NAME) : $(OBJS_SER)
 	cd libft && make compile && make 
-	cc -g  $(OBJS_SER)  ./libft/libft.a  -o $(SERVER_NAME)
-	cc -g  $(OBJS_CLI) ./libft/libft.a  -o $(CLIENT_NAME)
+	cc   $(OBJS_SER) $(LIB) -o $(SERVER_NAME)
 	
+
+$(CLIENT_NAME) : $(OBJS_CLI)
+	cd libft && make compile && make 
+	cc   $(OBJS_CLI) $(LIB) -o $(CLIENT_NAME)
+
 
 bonus: $(OBJECT_B) $(NAME)
 	ar rcs $(NAME) $^
@@ -49,10 +56,14 @@ bonus: $(OBJECT_B) $(NAME)
 
 clean:
 	$(fclean)
+	$(RM)  $(OBJS_SER)
+	$(RM)  $(OBJS_CLI)
+	cd ./libft && make clean
 
 fclean: clean
 	$(RM) $(SERVER_NAME) 
-	$(RM) $(CLIENT_NAME) 
+	$(RM) $(CLIENT_NAME)
+
 
 re: fclean all
 
@@ -64,14 +75,14 @@ norm:
 
 
 .SILENT:
+
 inicia:
-	make start && make bit
-	
+	make && make start && make bit
 
 start: 
 	$(all)
 	gnome-terminal -- bash -c ./$(SERVER_NAME)
 
 bit: 
-	./client $(shell cat number.txt ) $(BITS)
+	./client $(shell cat number.txt ) $(BITS) 
 	

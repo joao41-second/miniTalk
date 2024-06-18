@@ -6,13 +6,12 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 11:50:39 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/07 14:40:25 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/17 10:00:31 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLGS = -Wall -Wextra -Werror
 
-NAME = lib.a
 
 AR = ar rcs
 
@@ -28,11 +27,11 @@ CC = cc
 
 RM = rm -f
 
-#.SILENT:
+.SILENT:
 
-all: $(NAME)
+all: $(SRCS)
 
-$(NAME): $(SRCS) 
+$(SRCS):
 	cd $(LIBFT_DIR) && make
 	mv $(LIBFT) .
 	cd $(PRINTF_DIR) && make
@@ -40,8 +39,10 @@ $(NAME): $(SRCS)
 	$(AR) $@ $^ 
 clean:
 	$(RM) $(SRCS)
+	cd $(LIBFT_DIR) && make clean
+	cd $(PRINTF_DIR) && make clean
 	
-
+	
 compile:
 	cd $(LIBFT_DIR) && make
 	mv $(LIBFT) .
@@ -49,8 +50,8 @@ compile:
 	mv $(PRINTF) .
 
 fclean: clean
-	$(RM) $(NAME)
-
+	$(RM) $(SRCS)
+	
 re: fclean all
 
 exec:
@@ -58,5 +59,3 @@ exec:
 
 norm:
 	python3 -m c_formatter_42 -c $(SRCS)
-
-test: compile all clean

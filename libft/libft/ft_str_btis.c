@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_str_btis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 09:50:10 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/17 13:17:57 by jperpect         ###   ########.fr       */
+/*   Created: 2024/06/17 10:53:20 by jperpect          #+#    #+#             */
+/*   Updated: 2024/06/17 11:39:02 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr_fds(char *s, int fd)
+void ft_str_btis(int number_bist, char bits,char *bts)
 {
 	int i;
 	i = 0;
-	if (s == NULL)
-		s = "(null)";
-	while (*s)
+	while(number_bist-- > 0)
 	{
-		ft_putchar_fds(*s, fd);
-		s++;
+		if(bits & (1<<number_bist))
+			bts[i] = '1';
+		else
+			bts[i] = '0';
 		i++;
 	}
-	return(i);
 }
-/*
-int	main(int ac , char **av)
-{
-    ft_putstr_fd(av[1],1);
-}*/
+
+// int main()
+// {
+// 	char a[8];
+// 	ft_str_btis(8,'A',a);
+// 	printf("%s",a);
+// }

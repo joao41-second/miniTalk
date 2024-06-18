@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:36:29 by jperpect          #+#    #+#             */
-/*   Updated: 2024/05/01 13:10:59 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:14:31 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,10 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 * @param lst list .
 * @param f funcion to aplicade.
 */
+void ft_str_btis(int number_bist, char bits,char *bts);
+
+
+
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 

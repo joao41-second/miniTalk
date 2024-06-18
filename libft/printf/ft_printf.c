@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:10:30 by jperpect          #+#    #+#             */
-/*   Updated: 2024/05/08 14:43:49 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:22:35 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static int identifire(char id,va_list args)
 {
 	if(id == 'c')
-		return(ft_putchar_fd( va_arg(args,int ),1));
+		return(ft_putchar_fds( va_arg(args,int ),1));
 	else if (id == 's')
-		return(ft_putstr_fd(va_arg(args,char *),1));
+		return(ft_putstr_fds(va_arg(args,char *),1));
 	else if (id == 'p')
 		return(ft_printp(va_arg(args,unsigned long )));
 	else if (id == 'd')
@@ -31,7 +31,7 @@ static int identifire(char id,va_list args)
 	else if (id == 'X')
 	 return(ft_putnbr_base(va_arg(args, unsigned   ), "0123456789ABCDEF",0));
 	else if (id == '%')
-	 return(ft_putchar_fd('%',1));
+	 return(ft_putchar_fds('%',1));
 	return(0);
 }
 
@@ -58,7 +58,7 @@ int ft_printf(const char *str, ...)
 				i+=2;
 		}
 		else
-		 ft_putchar_fd(str[cont++],1);
+		 ft_putchar_fds(str[cont++],1);
 	}
 	va_end(args);
 	return (cont +add- i);

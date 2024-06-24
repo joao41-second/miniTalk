@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/24 13:55:41 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:54:24 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ char * compli_str(char *bin_letra,char *temp,char *save)
 
 void	handlers(int sig, siginfo_t *info, void *ucontext)
 {
+
+	//int fd = open("file.ret", O_WRONLY | O_CREAT, 0644 );
+	int fd = 1;
 	static int ids = 0;
 	static char letra[8] = "22222222";
 	static int len = 0;
@@ -128,8 +131,8 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 		save = compli_str(letra,temp,save);
 		if(ft_strncmp("00000000",letra,8) == 0)
 		{
-			ft_lstptint(save_list,1);
-			ft_putstr_fd(save,1);
+			ft_lstptint(save_list,fd);
+			ft_putstr_fd(save,fd);
 		
 		}
 		ft_btowe(letra,8);
@@ -141,7 +144,7 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 			element = ft_lstnew(save);
 			if (index == 0)
 			{
-				list = element;
+				list = ft_lstnew("");;
 				save_list = list;
 				
 			}else{
@@ -205,6 +208,7 @@ int main()
 	
 
 	int fd = open("number.txt", O_WRONLY | O_CREAT, 0644 );
+	
 	ft_putnbr_fd(getpid(),fd);	
 	close(fd);
 	

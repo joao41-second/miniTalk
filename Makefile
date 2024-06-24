@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/24 13:03:31 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/24 16:56:55 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM = rm -f
 
 CAT = cat number.txt 
 
-BITS = 1234567891011121314151
+BITS = "$(shell cat wods.txt )"
 
 SERVER_NAME = server
 

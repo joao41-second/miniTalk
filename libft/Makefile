@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 11:50:39 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/17 10:00:31 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/24 10:39:55 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ RM = rm -f
 all: $(SRCS)
 
 $(SRCS):
-	cd $(LIBFT_DIR) && make
+	cd $(LIBFT_DIR) && make bonus
 	mv $(LIBFT) .
-	cd $(PRINTF_DIR) && make
+	cd $(PRINTF_DIR) && make 
 	mv $(PRINTF) .
 	$(AR) $@ $^ 
 clean:
@@ -44,7 +44,7 @@ clean:
 	
 	
 compile:
-	cd $(LIBFT_DIR) && make
+	cd $(LIBFT_DIR) && make bonus
 	mv $(LIBFT) .
 	cd $(PRINTF_DIR) && make
 	mv $(PRINTF) .

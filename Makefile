@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/19 09:49:27 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/24 13:03:31 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM = rm -f
 
 CAT = cat number.txt 
 
-BITS = Loremipsumdolorsitamet,consectetueradipiscingelit.Nullamfeugiat,turpisatpulvinarvulputate,eratliberot
+BITS = 1234567891011121314151
 
 SERVER_NAME = server
 

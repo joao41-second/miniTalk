@@ -8,10 +8,10 @@
 
 void	handlers(int sig, siginfo_t *info, void *ucontext)
 {
-	if(sig == SIGUSR1 )
-		write(1,"ola\n",4);
-	else
-		write(1,"ola\n",4);
+	// if(sig == SIGUSR1 )
+	// 	write(1,"ola\n",4);
+	// else
+	// 	write(1,"ola\n",4);
   
 }
 
@@ -39,12 +39,9 @@ static void env_bit(char *str,pid_t ok)
   
   while(str[++i] != '\0')
   {
-    if(i % 8 == 0)
-    ft_printf(" \n");
-    ft_printf("%c",str[i]);
     if(str[i] == '0')
       kill(ok,SIGUSR1);
-    else if (str[i]== '1')
+    if (str[i]== '1')
       kill(ok,SIGUSR2);
     server();
     usleep(1000);
@@ -54,17 +51,26 @@ static void env_bit(char *str,pid_t ok)
 
 int main(int ac ,char **av )
 {
+  sleep(1);
   if ( ac == 3)
   {
     int i;
-    char b[8];
+    char b[9];
     i= -1;
     pid_t server_pid = ft_atoi(av[1]);
     while(av[2][++i] != '\0')
     {
+      ft_bzero(b,9);
       ft_str_btis(8,av[2][i],b);
+      
+      ft_printf("bits - %s\n", b);
       env_bit(b,server_pid);
     }
+    ft_bzero(b,9);
+   
+    ft_printf("bits - %s\n", "00000000");
+    env_bit("00000000",server_pid);
+    
 
   }
 }

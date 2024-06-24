@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/17 11:33:14 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/24 13:28:49 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS = ft_atoi.c ft_isdigit.c ft_memmove.c ft_split.c ft_strlcat.c ft_strrchr.c 
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 		ft_lstlast.c ft_lstadd_back.c  ft_lstdelone.c \
-		ft_lstclear.c ft_lstiter.c ft_lstmap.c\
+		ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstprint.c\
 
 OBJECT = $(SRCS:.c=.o) 
 

@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/24 09:53:55 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:55:41 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char atoi_base(char *nbr,int base)
 	return(valeu);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	ft_btowe(void *s, size_t n)
 {
 	size_t	cont;
 	char	*str;
@@ -75,60 +75,12 @@ void	ft_bzero(void *s, size_t n)
 }
 
 
-// void	handlers(int sig, siginfo_t *info, void *ucontext)
-// {
-// 	static int ids = 0;
-// 	static char letra[8] = "22222222";
-// 	static int len = 0;
-// 	static char *save = "";
-// 	char *temp;
-// 	//temp = save;
-
-// 	if(sig == SIGUSR1 )
-// 		letra[ids] = '0'; 	
-// 	else
-// 		letra[ids] = '1';
-	
-// 	if (ids == 7)
-// 	{
-		
-// 		char let = -(atoi_base(letra,2));
-// 		ft_printf(" %s\n",letra);
-// 		ft_bzero(letra,8);
-		
-// 		//ft_printf(" %c\n",let);
-		
-// 		ids = -1;
-// 		//temp = ft_strdup(save);
-// 		//save = ft_strjoin(temp,&let);
-// 		//ft_printf(" %s\n",save);
-		
-// 		//ft_concatenat_str(temp,"a");
-		
-// 	}
-// 	kill(info->si_pid,SIGUSR1);
-// 	ids++;
-// 	len++;
-	
-// }
-void	handlers(int sig, siginfo_t *info, void *ucontext)
+char * compli_str(char *bin_letra,char *temp,char *save)
 {
-	static int ids = 0;
-	static char letra[8] = "22222222";
-	static int len = 0;
-	
-	 static char *save  = NULL;
-	 char *temp;
-	
-	if(sig == SIGUSR1 )
-		letra[ids] = '0'; 	
-	else
-		letra[ids] = '1';
-	
-	if (ids == 7)
-	{
-		char let = -(atoi_base(letra,2));
+	    char let ;
 		char le[2];
+		let =  -(atoi_base(bin_letra,2));
+		///printf("\n os bit -%s \n",bin_letra);
 		le[0]= let;
 		le[1]='\0';
 
@@ -141,13 +93,73 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 			
 		 //ft_printf(" temp = %s let = %s \n",temp, le);
  		 save = ft_concatenat_str(temp,le);
-		 ft_bzero(letra,8);
-		 ft_printf(" %s\n",save);
+		 return(save);
+		 
+}
+
+
+void	handlers(int sig, siginfo_t *info, void *ucontext)
+{
+	static int ids = 0;
+	static char letra[8] = "22222222";
+	static int len = 0;
+	static int index = 0;
+	
+	
+	static t_list *list;
+	static t_list *save_list ;
+	
+	t_list *element;
+
+	
+	 static char *save  = NULL;
+	 char *temp;
+	
+	if(sig == SIGUSR1 )
+		letra[ids] = '0'; 	
+	else if ( sig == SIGUSR2)
+		letra[ids] = '1';
+	
+	if (ids == 7)
+	{
+		usleep(100);
+		
+			
+		save = compli_str(letra,temp,save);
+		if(ft_strncmp("00000000",letra,8) == 0)
+		{
+			ft_lstptint(save_list,1);
+			ft_putstr_fd(save,1);
+		
+		}
+		ft_btowe(letra,8);
+		//ft_printf(" %s\n",save);
+		
+		if (len == 10)
+		{
+			len = 0;
+			element = ft_lstnew(save);
+			if (index == 0)
+			{
+				list = element;
+				save_list = list;
+				
+			}else{
+		
+			save = NULL;
+			ft_lstadd_back(&list,element);
+			//ft_printf("%s",element->content);
+			list = list->next;
+			}
+			index++;
+		}
+		
 		ids = -1;
+		len++;
 	}
 	kill(info->si_pid,SIGUSR1);
 	ids++;
-	len++;
+	
 	
 }
 

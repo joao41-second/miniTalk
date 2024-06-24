@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:53:20 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/17 11:39:02 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:20:41 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ft_str_btis(int number_bist, char bits,char *bts)
 			bts[i] = '0';
 		i++;
 	}
+	
 }
 
 // int main()

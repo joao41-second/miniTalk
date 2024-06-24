@@ -8,10 +8,10 @@
 
 void	handlers(int sig, siginfo_t *info, void *ucontext)
 {
-	// if(sig == SIGUSR1 )
-	// 	write(1,"ola\n",4);
-	// else
-	// 	write(1,"ola\n",4);
+	if(sig == SIGUSR1 )
+		write(1,"ola\n",4);
+	else
+		write(1,"ola\n",4);
   
 }
 

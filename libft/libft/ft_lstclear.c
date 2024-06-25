@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:54:05 by jperpect          #+#    #+#             */
-/*   Updated: 2024/05/01 14:30:39 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:36:54 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	}
 }
 
+
+
+
 /*
-static void	liber(void *ok)
-{
-	ft_putstr_fd("funcao tem ",1);
-	ft_putstr_fd((char *)ok,1);
-}
+
 
 
  int main(int ac,char **av)

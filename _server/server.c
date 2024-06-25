@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/24 16:54:24 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:23:45 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 
 #include "../libft/libft/libft.h"
 #include "../libft/printf/ft_printf.h"
+
+
+void	liber(void *ok)
+{
+	ft_putstr_fd("funcao tem ",1);
+	ft_putstr_fd((char *)ok,1);
+}
 
 char	*ft_concatenat_str(char *orig, char *second)
 {
@@ -80,19 +87,21 @@ char * compli_str(char *bin_letra,char *temp,char *save)
 	    char let ;
 		char le[2];
 		let =  -(atoi_base(bin_letra,2));
-		///printf("\n os bit -%s \n",bin_letra);
 		le[0]= let;
 		le[1]='\0';
-
+			
 		 if (save == NULL)
 		 {
 			temp = ft_strdup("");
+			
 		 }
 		 else 
 		 	temp = ft_strdup(save);
 			
-		 //ft_printf(" temp = %s let = %s \n",temp, le);
+		
  		 save = ft_concatenat_str(temp,le);
+		
+	
 		 return(save);
 		 
 }
@@ -129,10 +138,16 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 		
 			
 		save = compli_str(letra,temp,save);
+	
 		if(ft_strncmp("00000000",letra,8) == 0)
 		{
+			//element = ft_lstnew(save);
+			//ft_lstadd_back(&list,element);	
+			
 			ft_lstptint(save_list,fd);
-			ft_putstr_fd(save,fd);
+			
+			ft_lstclear(&save_list,liber);
+			free(save_list);
 		
 		}
 		ft_btowe(letra,8);
@@ -141,7 +156,7 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 		if (len == 10)
 		{
 			len = 0;
-			element = ft_lstnew(save);
+			element = ft_lstnew(save);		
 			if (index == 0)
 			{
 				list = ft_lstnew("");;
@@ -150,8 +165,9 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 			}else{
 		
 			save = NULL;
+			
 			ft_lstadd_back(&list,element);
-			//ft_printf("%s",element->content);
+			ft_lstdelone(element, liber);			
 			list = list->next;
 			}
 			index++;

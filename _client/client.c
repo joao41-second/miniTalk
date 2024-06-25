@@ -51,7 +51,6 @@ static void env_bit(char *str,pid_t ok)
 
 int main(int ac ,char **av )
 {
-  sleep(1);
   if ( ac == 3)
   {
     int i;

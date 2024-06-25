@@ -2,9 +2,11 @@
 
 void					ft_lstptint(t_list *lst,int dg)
 {
-	while(lst != NULL)
+	t_list	*lsts = lst;
+	while(lsts != NULL)
 	{
-		ft_putstr_fd(lst->content,dg);
-		lst = lst->next;
+		ft_putstr_fd(lsts->content,dg);
+
+		lsts = lsts	->next;
 	}	
 }

@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/24 16:56:55 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/25 17:24:53 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ RM = rm -f
 
 CAT = cat number.txt 
 
-BITS = "$(shell cat wods.txt )"
+#BITS = "$(shell cat wods.txt )"
+
+BITS ="0123456789"
 
 SERVER_NAME = server
 
@@ -79,6 +81,8 @@ norm:
 inicia:
 	make && make start && make bit
 
+
+
 start: 
 	$(all)
 	gnome-terminal -- bash -c ./$(SERVER_NAME)
@@ -86,3 +90,16 @@ start:
 bit: 
 	./client $(shell cat number.txt ) $(BITS) 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+

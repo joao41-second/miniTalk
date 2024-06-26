@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 06:14:01 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/26 10:55:20 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:54:08 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	if (lst)
 	{
 		(*del)(lst->content);
-		//free(lst->content);
+		
 		free(lst);
 	}
 }

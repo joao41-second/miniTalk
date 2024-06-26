@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/26 11:48:45 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:46:45 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,7 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 	
 	if (ids == 7)
 	{
-		
-		
-			
+
 		 compli_str(letra,temp,save);
 	
 		if(ft_strncmp("00000000",letra,8) == 0)
@@ -152,16 +150,16 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 		if (len == 10)
 		{
 			len = 0;
-			element = ft_lstnew(ft_strdup(save));		
+			
 			if (index == 0)
 			{
 				list = ft_lstnew(ft_strdup(save));;
+				
 				save_list = list;
 				
 			}else{
-			
-			ft_lstadd_back(&list,element);
-			//ft_lstdelone(element, liber);			
+			element = ft_lstnew(ft_strdup(save));		
+			ft_lstadd_back(&list,element);		
 			list = list->next;
 			}
 			ft_bzero(save,11);

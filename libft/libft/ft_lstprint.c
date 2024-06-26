@@ -6,6 +6,7 @@ void					ft_lstptint(t_list *lst,int dg)
 	while(lsts != NULL)
 	{
 		ft_putstr_fd(lsts->content,dg);
+		free(lsts->content);
 
 		lsts = lsts	->next;
 	}	

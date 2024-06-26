@@ -44,7 +44,7 @@ static void env_bit(char *str,pid_t ok)
     if (str[i]== '1')
       kill(ok,SIGUSR2);
     server();
-    usleep(1000);
+    usleep(2000);
   }
 
 }
@@ -62,7 +62,7 @@ int main(int ac ,char **av )
       ft_bzero(b,9);
       ft_str_btis(8,av[2][i],b);
       
-      ft_printf("bits - %s\n", b);
+     // ft_printf("bits - %s\n", b);
       env_bit(b,server_pid);
     }
     ft_bzero(b,9);

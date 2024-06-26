@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 11:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/25 17:23:45 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:48:45 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 void	liber(void *ok)
 {
-	ft_putstr_fd("funcao tem ",1);
-	ft_putstr_fd((char *)ok,1);
+	//ft_putstr_fd("funcao tem ",1);
+	//ft_putstr_fd((char *)ok,1);
 }
 
 char	*ft_concatenat_str(char *orig, char *second)
@@ -90,16 +90,9 @@ char * compli_str(char *bin_letra,char *temp,char *save)
 		le[0]= let;
 		le[1]='\0';
 			
-		 if (save == NULL)
-		 {
-			temp = ft_strdup("");
-			
-		 }
-		 else 
-		 	temp = ft_strdup(save);
-			
 		
- 		 save = ft_concatenat_str(temp,le);
+		
+ 		ft_strlcat(save,le,11);
 		
 	
 		 return(save);
@@ -124,7 +117,9 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 	t_list *element;
 
 	
-	 static char *save  = NULL;
+	 static char save[11];
+
+	 
 	 char *temp;
 	
 	if(sig == SIGUSR1 )
@@ -134,10 +129,10 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 	
 	if (ids == 7)
 	{
-		usleep(100);
+		
 		
 			
-		save = compli_str(letra,temp,save);
+		 compli_str(letra,temp,save);
 	
 		if(ft_strncmp("00000000",letra,8) == 0)
 		{
@@ -145,9 +140,10 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 			//ft_lstadd_back(&list,element);	
 			
 			ft_lstptint(save_list,fd);
+			ft_putstr_fd(save,fd);
 			
 			ft_lstclear(&save_list,liber);
-			free(save_list);
+			//free(save_list);
 		
 		}
 		ft_btowe(letra,8);
@@ -156,25 +152,25 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 		if (len == 10)
 		{
 			len = 0;
-			element = ft_lstnew(save);		
+			element = ft_lstnew(ft_strdup(save));		
 			if (index == 0)
 			{
-				list = ft_lstnew("");;
+				list = ft_lstnew(ft_strdup(save));;
 				save_list = list;
 				
 			}else{
-		
-			save = NULL;
 			
 			ft_lstadd_back(&list,element);
-			ft_lstdelone(element, liber);			
+			//ft_lstdelone(element, liber);			
 			list = list->next;
 			}
+			ft_bzero(save,11);
 			index++;
 		}
 		
 		ids = -1;
 		len++;
+		usleep(500);
 	}
 	kill(info->si_pid,SIGUSR1);
 	ids++;

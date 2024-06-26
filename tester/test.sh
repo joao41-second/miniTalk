@@ -71,8 +71,6 @@ time $PATH_TO_CLIENT $p_id "....................................................
 ...................................................................................................
 "
 
-
-
 ######## MANDATORY #########
 
 ### Test 1 ###
@@ -263,7 +261,7 @@ if [[ $t4 == 1 || $tm == 1 ]]
 then
     echo "${L_Green}\n [Test 4]\tTrying to crash your exhange Server-Client, sending str with 3 000 char (15 times) ${NC}"
 
-    for i in {1..15}
+    for i in {1..30}
     do
         echo -n "${Green} [ ${i} ]${NC}"
         $PATH_TO_CLIENT $p_id "

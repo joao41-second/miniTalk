@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 21:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/27 16:20:41 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:02:16 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,60 +39,29 @@ void concat(char *str,char *bits)
 	str[len+1] = '\0';
 }
 
-
-
-
-
-
-void	handlers(int sig, siginfo_t *info, void *ucontext)
+int print_and_clear(t_list *save_list,char *save,int *len,int *index )
 {
+	ft_lstptint(save_list,1);
+			ft_putstr_fd(save,1);
+			ft_lstclear(&save_list);
+			len[0] = 0;
+			index[0] = 0;
+			ft_bzero(save,11);
+			return(0);
+}
 
-	//int fd = open("file.ret", O_WRONLY | O_CREAT, 0644 );
-	int fd = 1;
-	static long int ids = 0;
-	static char letra[8] = "22222222";
-	static long int len = 0;
-	static long int index = 0;
 
+
+t_list *list_control(int *len,int *index,char *save)
+{
+	t_list *element;
 	static t_list *list;
 	static t_list *save_list ;
-	
-	t_list *element;
-	static char save[11];
-	
-	if(sig == SIGUSR1 )
-		letra[ids] = '0'; 	
-	else if ( sig == SIGUSR2)
-		letra[ids] = '1';
-	
-	if (ids == 7)
-	{
-		
-		concat(save,letra);
-		
-		
-		if(ft_strncmp("00000000",letra,8) == 0)
-		{
-			ft_lstptint(save_list,fd);
-			ft_putstr_fd(save,fd);
-			ft_lstclear(&save_list);
-			len = 0;
-			index =0;
-			ids = 0;
-			ft_bzero(save,11);
-			
-		}
-		ft_bzero(letra,8);
-
-		if (len == 10)
-		{
-			len = 0;
-			//ft_printf("%s",save);
-			 usleep(50);
-			if (index == 0)
+	len[0] = 0;
+			usleep(50);
+			if (index[0] == 0)
 			{
 				list = ft_lstnew(ft_strdup(save));;
-				
 				save_list = list;		
 			}
 			else
@@ -102,16 +71,36 @@ void	handlers(int sig, siginfo_t *info, void *ucontext)
 			list = list->next;
 			}
 			ft_bzero(save,11);
-		
-			index++;
-		}
+			index[0]++;
+			return(save_list);
+}
+
+
+void	handlers(int sig, siginfo_t *info, void *ucontext)
+{
+	static  int ids = -1;
+	static char letter[8] = "22222222";
+	static  int len = 0;
+	static  int index = 0;
+	static t_list *save_list ;
+	static char save[11];
+	
+	if(sig == SIGUSR1 )
+		letter[++ids] = '0'; 	
+	else if ( sig == SIGUSR2)
+		letter[++ids] = '1';
+	if (ids == 7)
+	{
+		concat(save,letter);
+		if(ft_strncmp("00000000",letter,8) == 0)
+			 ids = print_and_clear(save_list,save,&len,&index );
+		ft_bzero(letter,8);
+		if (len == 10)
+			save_list = list_control(&len,&index,save);
 		ids = -1;
 		len++;
 	}
-	ids++;
 	kill(info->si_pid,SIGUSR1);
-	
-	
 }
 
 

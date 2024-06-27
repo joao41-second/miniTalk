@@ -45,7 +45,7 @@ static void env_bit(char *str,pid_t ok)
       kill(ok,SIGUSR1);
     if (str[i]== '1')
       kill(ok,SIGUSR2);
-    usleep(5000);
+    usleep(4000);
     //pause();
   }
 

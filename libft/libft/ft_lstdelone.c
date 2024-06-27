@@ -6,20 +6,17 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 06:14:01 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/26 11:54:08 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:35:07 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list *lst)
+
 {
-	if (!del)
-		return ;
 	if (lst)
-	{
-		(*del)(lst->content);
-		
+	{	
 		free(lst);
 	}
 }

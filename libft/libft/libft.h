@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:36:29 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/24 13:56:24 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:33:53 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,13 +190,13 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 * @param lst list create after moment 
 * @param new elemente to list
 */
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
+void				ft_lstdelone(t_list *lst);
 /**
 * @brief delet to menber to free
 * @param lst menber to list the del
 * @param funcion to excute ao del item 
 */
-void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstclear(t_list **lst);
 /**
 * @brief clear and free list. 
 * @param lst list;

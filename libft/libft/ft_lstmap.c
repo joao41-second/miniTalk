@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:12:09 by jperpect          #+#    #+#             */
-/*   Updated: 2024/05/01 15:37:34 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:37:05 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		verf = ft_lstnew((*f)(lst->content));
 		if (!verf)
 		{
-			ft_lstclear(&new, del);
+			 (del)("aa");
+			ft_lstclear(&new);
 			return (NULL);
 		}
 		ft_lstadd_back(&new, verf);

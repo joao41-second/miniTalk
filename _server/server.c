@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 21:31:45 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/28 13:35:29 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:47:14 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int	main(void)
 	sa.sa_sigaction = handlers;
 	sa.sa_flags = SA_RESTART | SA_SIGINFO;
 	ft_printf("PID e = %d \n", getpid());
-	ft_putnbr_fd(getpid(), 1);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

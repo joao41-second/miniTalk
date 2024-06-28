@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:36:29 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/27 11:33:53 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:49:09 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,20 +208,18 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 * @param lst list .
 * @param f funcion to aplicade.
 */
-void					ft_lstptint(t_list *lst,int gd);
+void				ft_lstptint(t_list *lst, int gd);
 /**
 * @brief print elementes to list
 * @param lst list in first elemnte
 */
-
-
-
-
-
-void ft_str_btis(int number_bist, char bits,char *bts);
-
-
-
+void				ft_str_btis(int number_bist, char bits, char *bts);
+/**
+* @brief save in char *bts repetiv bits of the bits 
+* @param nuber_bist nober de bits of the variabe ex int 32 char 8
+* @param bits char or int to conver in string
+* @param bts string where save the bits in format of the string
+*/
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 

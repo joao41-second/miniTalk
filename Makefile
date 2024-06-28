@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/28 09:48:15 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/28 14:39:40 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,8 @@ exec:
 
 norm: 
 	python3 -m c_formatter_42 -c $(BONUS)
-
-
+	
+	
 .SILENT:
 
 inicia:
@@ -91,16 +91,3 @@ start:
 bit: 
 	./client $(shell cat number.txt ) $(BITS) 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-

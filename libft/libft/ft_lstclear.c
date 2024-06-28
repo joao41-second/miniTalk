@@ -24,11 +24,7 @@ void	ft_lstclear(t_list **lst)
 		ft_lstdelone(*lst);
 		*lst = ant;
 	}
-	
 }
-
-
-
 
 /*
 

@@ -6,7 +6,7 @@
 #    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 06:17:31 by jperpect          #+#    #+#              #
-#    Updated: 2024/06/24 13:28:49 by jperpect         ###   ########.fr        #
+#    Updated: 2024/06/28 14:06:43 by jperpect         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,4 +62,4 @@ exec:
 	cc	-g $(FLGS)  $(SRCS) $(BONUS) -lbsd
 
 norm: 
-	python3 -m c_formatter_42 -c $(BONUS)
+	yes y | python3 -m c_formatter_42 -c $(SRCS)

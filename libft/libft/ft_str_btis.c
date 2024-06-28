@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-void ft_str_btis(int number_bist, char bits,char *bts)
+void	ft_str_btis(int number_bist, char bits, char *bts)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(number_bist-- > 0)
+	while (number_bist-- > 0)
 	{
-		if(bits & (1<<number_bist))
+		if (bits & (1 << number_bist))
 			bts[i] = '1';
 		else
 			bts[i] = '0';
 		i++;
 	}
-	
 }
 
 // int main()

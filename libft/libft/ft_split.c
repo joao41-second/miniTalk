@@ -149,19 +149,18 @@ char	**ft_split(char const *s, char c)
 /*  int	main(int ac,char **av)
 {
 	char	**str;
-  //  int *ok;
+	int		i;
 
+  //  int *ok;
 //	while (*str){
 //		printf("%s\n", *str);
   //      free(*str++);
    // }
    // free(**str);
     str = ft_split("hello!", 32);
-    int i = 0;
-
+    i = 0;
 		while(str[i] != NULL )
      {
-
         //ft_putnbr_fd(ft_strlen(str[i]) +1,1);
 		ft_putchar_fd(' ',1);
         ft_putstr_fd(str[i],1);
@@ -169,14 +168,10 @@ char	**ft_split(char const *s, char c)
         free(str[i]);
         i++;
     }
-
     free(str);
-
     //ft_putnbr_fd(i,1);
     //free(str[i]);
-
    // free(str[3]);
    // ft_free(3,ok,str,3);
-
 }
  */

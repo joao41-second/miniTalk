@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/08 14:51:15 by jperpect          #+#    #+#              #
+#    Updated: 2024/06/28 14:45:38 by jperpect         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FLGS = -Wall -Wextra -Werror
 
 NAME =libftprintf.a
@@ -23,14 +35,12 @@ all: $(NAME)
 $(NAME): $(OBJECT)
 	$(AR) $@ $^
 
-bonus: $(OBJECT_B) $(NAME)
-	ar rcs $(NAME) $^
 
 %.o:%.c libft.h
 	cc -c $(FLGS) -o $@ $<  
 
 clean:
-	$(RM)  $(OBJECT) $(OBJECT_B)
+	$(RM) $(OBJECT)
 
 fclean: clean
 	$(RM) $(NAME) 
@@ -40,5 +50,5 @@ re: fclean all
 exec:
 	cc	-g   $(SRCS) $(BONUS) -lbsd
 
-norm: 
-	python3 -m c_formatter_42 -c $(BONUS)
+# norm: 
+#    yes y|	python3 -m c_formatter_42 -c $(BONUS)

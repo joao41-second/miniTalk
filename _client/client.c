@@ -6,7 +6,7 @@
 /*   By: jperpect <jperpect@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:36:16 by jperpect          #+#    #+#             */
-/*   Updated: 2024/06/28 13:38:03 by jperpect         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:51:27 by jperpect         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	env_bit(char *str, pid_t ok)
 			kill(ok, SIGUSR1);
 		if (str[i] == '1')
 			kill(ok, SIGUSR2);
-		usleep(4000);
+		usleep(5000);
 	}
 }
 
@@ -60,6 +60,8 @@ int	main(int ac, char **av)
 	{
 		i = -1;
 		server_pid = ft_atoi(av[1]);
+		if (av[2][0] == '\0')
+			return (0);
 		while (av[2][++i] != '\0')
 		{
 			ft_bzero(b, 9);
